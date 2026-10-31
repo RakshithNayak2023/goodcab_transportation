@@ -3,9 +3,10 @@ from pyspark.sql import *
 from pyspark.sql.functions import *
 
 PATH=spark.conf.get("transportation.bronze.city")
+catalog=spark.conf.get("catalog")
 
 @dp.materialized_view(
-    name='transportation.bronze.bronze_city',
+    name=f"{catalog}.bronze.bronze_city",
     comment='Bronze table for city data',
     table_properties={
         'layer': 'bronze',
