@@ -1,8 +1,10 @@
 from pyspark import pipelines as dp
 from pyspark.sql.functions import *
 
+catalog=spark.conf.get("catalog")
+
 @dp.materialized_view(
-    name="transportation.silver.calender",
+    name=f"{catalog}.silver.calender",
     comment="Calendar table for date-related calculations",
     table_properties={
         "quality": "calender",
